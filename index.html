@@ -6,23 +6,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hello world</title>
 </head>
-<body>
-    <div id="app">
-        {{msg}}
-        <button>alert</button>
+<body>       
+<!-- /挂载元素 -->
+    <div id="app"> 
+        <div>{{msg}}</div>
+        <!-- v-on可以简写为@click -->
+        <button v-on:click="add()">点击</button>
+        <div>{{count}}</div>
+
+        <div v-if="show">       
+            展示
+        </div>
+        <div v-else>
+            不展示 页面无dom节点
+        </div>
+        <div v-show="show">
+            v-show,页面有dom节点
+        </div>
+        <p v-for="(value,index) in list">
+            list:{{value}}--{{index}}
+        </p>
+
+        <p v-for="(value,key,index) in dict">
+            dict:{{value.order}}-{{value.age}}-{{index}}
+        </p>
+        <p v-for="value in objarr">
+            objarr:{{value.order}}-{{value.age}}
+        </p>
+        <!-- :style前省略了v-bind -->
+        <div style="width:100px;height:100px;border:1px solid #000" :style="bgColor"></div>
+        <!-- 页面展示内容 -->
+        <input type="text" v-model="text">
+        
+        <button @click="showText()">输入</button>
     </div>
 
+<!-- 引入vue -->
     <script src="./vue.js"></script>
+    <!-- 编写方法 -->
     <script>
-        new new Vue({
+        new Vue({
             el:'#app',
+            //  所有的数据写在data下
             data:{
-                msg:'hello world'
+                msg:'hello world',
+                show:true,
+                list:["wg","wgg"],
+                dict:{"wg":{"order":"first","age":18},"wgg":{"order":"second","age":28}},
+                objarr:[{"order":"first","age":18},{"order":"second","age":28}],
+                count:1,
+                bgColor:{
+                    backgroundColor:'red'
+                },
+                text:"123"
             },
             methods: {
-                
+                add(){
+                    this.count++
+                },
+                showText(){
+                    console.log(this.text)
+                }
+            },
+            created(){
+                console.log("created")
             }
         })
     </script>
 </body>
+
 </html>
