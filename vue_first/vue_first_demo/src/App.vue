@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
+    <!-- <v-app-bar
       app
       color="primary"
       dark
@@ -39,7 +39,10 @@
 
     <v-main>
       <HelloWorld/>
-    </v-main>
+    </v-main> -->
+    <router-view>
+      
+    </router-view>
   </v-app>
 </template>
 
