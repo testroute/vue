@@ -2,6 +2,9 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import SignIn from '../components/SignIn.vue'
+import HelloWorld from '../components/HelloWorld.vue'
+import Test from '../components/Test_Vue.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,6 +26,16 @@ const routes = [
       path: '/',
       name: 'SignIn',
       component: SignIn
+    },
+    {
+      path: '/hello',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test
     }
 ]
 
