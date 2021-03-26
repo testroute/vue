@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import SignIn from '../components/SignIn.vue'
 import HelloWorld from '../components/HelloWorld.vue'
 import Test from '../components/Test_Vue.vue'
+import Menu from '../components/LeftSideMenu.vue'
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,11 @@ const routes = [
       path: '/test',
       name: 'Test',
       component: Test
+    },
+    {
+      path: '/menu',
+      name: 'Menu',
+      component: Menu
     }
 ]
 

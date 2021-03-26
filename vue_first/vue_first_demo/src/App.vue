@@ -1,10 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
+    <v-app-bar app color="primary" dark clipped-left>
       <div class="d-flex align-center">
         <v-img
           alt="Vue_wg Logo"
@@ -40,23 +36,28 @@
     <!-- <v-main>
       <HelloWorld/>
     </v-main>  -->
-    <v-main>
+    <!-- <v-navigation-drawer>
+      <Menu/>
+    </v-navigation-drawer> -->
+    <v-content aria-autocomplete="on" class="noborder">
       <router-view>
         
       </router-view>
-    </v-main>
+    </v-content>
 
   </v-app>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld';
+import Menu from './components/LeftSideMenu.vue'
 
 export default {
   name: 'App',
 
   components: {
     HelloWorld,
+    Menu,
   },
 
   data: () => ({
@@ -64,3 +65,12 @@ export default {
   }),
 };
 </script>
+<style scoped>
+  .noborder{
+    display: flex;
+    width: 100% auto;
+    height: 100% auto;  
+          
+  }
+
+</style>
