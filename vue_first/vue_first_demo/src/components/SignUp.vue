@@ -16,18 +16,17 @@
     <v-text-field
       v-model="email"
       :rules="emailRules"
+      label="邮箱"
+      required
+    ></v-text-field>
+
+    <v-text-field
+      v-model="password"
+      :rules="passwordRules"
       type='password'
       label="密码"
       required
     ></v-text-field>
-
-    <v-select
-      v-model="select"
-      :items="items"
-      :rules="[v => !!v || 'Item is required']"
-      label="类型"
-      required
-    ></v-select>
 
     <v-checkbox
       v-model="checkbox"
@@ -40,9 +39,9 @@
       :disabled="!valid"
       color="success"
       class="mr-4"
-      @click="validate"
+      @click="register()"
     >
-      登  录
+      注  册
     </v-btn>
 
     <v-btn
@@ -55,9 +54,9 @@
 
     <v-btn
       color="warning"
-      @click="signup"
+      @click="SignIn()"
     >
-      注  册
+      登  陆
     </v-btn>
   </v-form>
   </div>    
@@ -75,29 +74,38 @@
       ],
       email: '',
       emailRules: [
-        v => !!v || '密码 is required',
-        v => /.+.+.+/.test(v) || 'E-mail must be valid',
+        v => !!v || '邮箱 is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
       ],
-      select: null,
-      items: [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
+      password: '',
+      passwordRules: [
+        v => !!v || '密码 is required',
+        v => (v && v.length >= 8) || '账号 must be more than 8 characters',
       ],
       checkbox: false,
     }),
 
     methods: {
-      validate () {
-        this.$refs.form.validate()
+      register(){
+        //{
+        //     'id':3,
+        //     'name':'testcase1',
+        //     'steps':['step1','step2']
+        // }
+        let post_data={
+            username : this.name,
+            email : this.email,
+            password : this.password
+        }
+        this.$api.user.SignUp(post_data).then(res=>{
+            console.log(res)
+        })
       },
       reset () {
         this.$refs.form.reset()
       },
-      signup () {
-        // this.$refs.form.resetValidation()
-        this.$router.push('SignUp')
+      SignIn () {
+        this.$router.push({name:'SignIn'})
       },
     },
   }

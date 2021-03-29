@@ -5,7 +5,7 @@ import SignIn from '../components/SignIn.vue'
 import HelloWorld from '../components/HelloWorld.vue'
 import Test from '../components/Test_Vue.vue'
 import Menu from '../components/LeftSideMenu.vue'
-
+import SignUp from '../components/SignUp.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -24,7 +24,7 @@ const routes = [
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // }
   {
-      path: '/',
+      path: '/SignIn',
       name: 'SignIn',
       component: SignIn
     },
@@ -42,6 +42,11 @@ const routes = [
       path: '/menu',
       name: 'Menu',
       component: Menu
+    },
+    {
+      path: '/SignUp',
+      name: 'SignUp',
+      component: SignUp
     }
 ]
 
